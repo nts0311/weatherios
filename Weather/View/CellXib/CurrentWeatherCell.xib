@@ -16,7 +16,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="npu-hV-fcP">
-                        <rect key="frame" x="0.0" y="20" width="477" height="288"/>
+                        <rect key="frame" x="0.0" y="20" width="477" height="308"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xSe-aK-Rcn" userLabel="description stackview">
                                 <rect key="frame" x="182.5" y="0.0" width="112" height="60"/>
@@ -49,19 +49,19 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="czw-kh-Fkn">
-                                <rect key="frame" x="171" y="80" width="135.5" height="47.5"/>
+                                <rect key="frame" x="171" y="80" width="135.5" height="67.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="60"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M2m-sw-Dgn">
-                                <rect key="frame" x="217.5" y="147.5" width="42" height="20.5"/>
+                                <rect key="frame" x="217.5" y="167.5" width="42" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vtf-rA-dbx">
-                                <rect key="frame" x="10" y="188" width="457" height="100"/>
+                                <rect key="frame" x="10" y="208" width="457" height="100"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="y87-fh-JHJ">
                                         <rect key="frame" x="10" y="20" width="437" height="17"/>
@@ -137,7 +137,7 @@
                     <constraint firstItem="npu-hV-fcP" firstAttribute="top" secondItem="3Nt-yB-3J0" secondAttribute="top" constant="20" id="IYE-iF-QcE"/>
                     <constraint firstAttribute="trailing" secondItem="npu-hV-fcP" secondAttribute="trailing" id="TyZ-m4-jSf"/>
                     <constraint firstItem="npu-hV-fcP" firstAttribute="leading" secondItem="3Nt-yB-3J0" secondAttribute="leading" id="Ze7-Oj-Yh9"/>
-                    <constraint firstAttribute="bottom" secondItem="npu-hV-fcP" secondAttribute="bottom" constant="30" id="yMw-ij-Wcl"/>
+                    <constraint firstAttribute="bottom" secondItem="npu-hV-fcP" secondAttribute="bottom" constant="10" id="yMw-ij-Wcl"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

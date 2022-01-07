@@ -11,4 +11,6 @@ import Foundation
 struct K {
     static let CurrentWeatherCell = "CurrentWeatherCell"
     static let DailyWeatherCell = "DailyWeatherCell"
+    static let HourlyItemCell = "HourlyItemCell"
+    static let HourlyWeatherCell = "HourlyWeatherCell"
 }

@@ -17,7 +17,9 @@ class WeatherInfoCell: UICollectionViewCell, UITableViewDataSource, UITableViewD
         super.awakeFromNib()
         
         tableView.register(UINib(nibName: K.CurrentWeatherCell, bundle: nil), forCellReuseIdentifier: K.CurrentWeatherCell)
-        tableView.register(UINib(nibName: K.DailyWeatherCell, bundle: nil), forCellReuseIdentifier: K.DailyWeatherCell)
+        tableView.register(UINib(nibName:
+            K.DailyWeatherCell, bundle: nil), forCellReuseIdentifier: K.DailyWeatherCell)
+        tableView.register(UINib(nibName: K.HourlyWeatherCell, bundle: nil), forCellReuseIdentifier: K.HourlyWeatherCell)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.estimatedRowHeight = 100
@@ -27,11 +29,11 @@ class WeatherInfoCell: UICollectionViewCell, UITableViewDataSource, UITableViewD
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if(section == 0){
+        if(section < 2){
             return 1
         }
         else {
@@ -44,6 +46,13 @@ class WeatherInfoCell: UICollectionViewCell, UITableViewDataSource, UITableViewD
             let cell = tableView.dequeueReusableCell(withIdentifier: K.CurrentWeatherCell, for: indexPath) as! CurrentWeatherCell
             if(data != nil){
                 cell.setData(data: data!.current)
+            }
+            return cell
+        }
+        else if (indexPath.section == 1) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: K.HourlyWeatherCell, for: indexPath) as! HourlyWeatherCell
+            if(data != nil){
+                cell.setData(data: data!.hourly)
             }
             return cell
         }
