@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DailyWeatherCell" rowHeight="79" id="Zb1-dq-pUu" customClass="DailyWeatherCell" customModule="Weather" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="481" height="77"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Zb1-dq-pUu" id="uiv-zy-QII">
+                <rect key="frame" x="0.0" y="0.0" width="481" height="77"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="5Jb-1h-4Cw">
+                        <rect key="frame" x="20" y="0.0" width="441" height="77"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j2K-mo-f8Y">
+                                <rect key="frame" x="0.0" y="28.5" width="329" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gl6-KL-Kco">
+                                <rect key="frame" x="349" y="28.5" width="42" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" verticalHuggingPriority="251" image="sun.min" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="4P8-A9-jFX">
+                                <rect key="frame" x="411" y="20.5" width="30" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="05U-yy-5jY"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="4P8-A9-jFX" secondAttribute="bottom" constant="20" id="bS9-Wu-Aho"/>
+                            <constraint firstItem="4P8-A9-jFX" firstAttribute="top" secondItem="5Jb-1h-4Cw" secondAttribute="top" constant="20" id="iiR-RW-smg"/>
+                        </constraints>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="5Jb-1h-4Cw" secondAttribute="trailing" constant="20" id="1IJ-HB-WRw"/>
+                    <constraint firstItem="5Jb-1h-4Cw" firstAttribute="top" secondItem="uiv-zy-QII" secondAttribute="top" id="C72-Bk-sgL"/>
+                    <constraint firstItem="5Jb-1h-4Cw" firstAttribute="leading" secondItem="uiv-zy-QII" secondAttribute="leading" constant="20" id="YMA-io-BIc"/>
+                    <constraint firstAttribute="bottom" secondItem="5Jb-1h-4Cw" secondAttribute="bottom" id="sGv-xs-HNC"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="imageCondition" destination="4P8-A9-jFX" id="7PK-6c-u9c"/>
+                <outlet property="labelDate" destination="j2K-mo-f8Y" id="bPo-6F-x9b"/>
+                <outlet property="labelTemp" destination="gl6-KL-Kco" id="g9t-PR-wa0"/>
+            </connections>
+            <point key="canvasLocation" x="64.492753623188406" y="5.6919642857142856"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="sun.min" catalog="system" width="64" height="60"/>
+    </resources>
+</document>

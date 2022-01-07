@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="SzJ-EI-scG">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="K6x-Uz-jB3" userLabel="searchlayout">
+                                        <rect key="frame" x="20" y="0.0" width="374" height="56"/>
+                                        <subviews>
+                                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Q3C-Jn-SJL">
+                                                <rect key="frame" x="0.0" y="0.0" width="318" height="56"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </searchBar>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QIO-QH-UYH">
+                                                <rect key="frame" x="328" y="13" width="46" height="30"/>
+                                                <state key="normal" title="Button"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="GPG-Ns-UdB">
+                                        <rect key="frame" x="0.0" y="56" width="414" height="762"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="sSK-dZ-5Gr">
+                                            <size key="itemSize" width="50" height="50"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells/>
+                                    </collectionView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="K6x-Uz-jB3" firstAttribute="leading" secondItem="SzJ-EI-scG" secondAttribute="leading" constant="20" id="4H8-Yr-4zP"/>
+                                    <constraint firstAttribute="bottom" secondItem="GPG-Ns-UdB" secondAttribute="bottom" id="8Oj-nD-t1Q"/>
+                                    <constraint firstItem="GPG-Ns-UdB" firstAttribute="top" secondItem="K6x-Uz-jB3" secondAttribute="bottom" id="8P0-sc-44S"/>
+                                    <constraint firstItem="GPG-Ns-UdB" firstAttribute="leading" secondItem="SzJ-EI-scG" secondAttribute="leading" id="GiC-sQ-Thi"/>
+                                    <constraint firstAttribute="trailing" secondItem="K6x-Uz-jB3" secondAttribute="trailing" constant="20" id="Ozv-Kr-1em"/>
+                                    <constraint firstAttribute="trailing" secondItem="GPG-Ns-UdB" secondAttribute="trailing" id="uEM-cU-7g0"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="SzJ-EI-scG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ENQ-5P-U9F"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="SzJ-EI-scG" secondAttribute="bottom" id="kiF-0g-BHD"/>
+                            <constraint firstItem="SzJ-EI-scG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="pkv-dW-Wn9"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="SzJ-EI-scG" secondAttribute="trailing" id="zpo-nt-6W1"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="collectionViewFlowLayout" destination="sSK-dZ-5Gr" id="Rmh-h0-TxU"/>
+                        <outlet property="pageCollectionView" destination="GPG-Ns-UdB" id="cc7-Yb-AOt"/>
+                        <outlet property="searchBar" destination="Q3C-Jn-SJL" id="M9B-Jx-GQU"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="132" y="101"/>
+        </scene>
+    </scenes>
+</document>
