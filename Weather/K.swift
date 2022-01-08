@@ -13,4 +13,5 @@ struct K {
     static let DailyWeatherCell = "DailyWeatherCell"
     static let HourlyItemCell = "HourlyItemCell"
     static let HourlyWeatherCell = "HourlyWeatherCell"
+    static let ToSearchAddressView = "ToSearchAddressView"
 }

@@ -39,10 +39,6 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="QVw-Gg-0u1" secondAttribute="trailing" id="W45-M0-4bP"/>
-                            <constraint firstItem="QVw-Gg-0u1" firstAttribute="leading" secondItem="ImH-IT-htz" secondAttribute="leading" id="ooP-g4-5v0"/>
-                        </constraints>
                     </stackView>
                 </subviews>
                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

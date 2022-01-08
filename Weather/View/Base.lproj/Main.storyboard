@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Hy2-kB-W7f">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
@@ -16,23 +16,33 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="SzJ-EI-scG">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="K6x-Uz-jB3" userLabel="searchlayout">
-                                        <rect key="frame" x="20" y="0.0" width="374" height="56"/>
+                                        <rect key="frame" x="20" y="0.0" width="374" height="50"/>
                                         <subviews>
-                                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Q3C-Jn-SJL">
-                                                <rect key="frame" x="0.0" y="0.0" width="318" height="56"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </searchBar>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QIO-QH-UYH">
-                                                <rect key="frame" x="328" y="13" width="46" height="30"/>
-                                                <state key="normal" title="Button"/>
-                                            </button>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="v28-9x-OVe">
+                                                <rect key="frame" x="0.0" y="11" width="30" height="28"/>
+                                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="30" id="guy-Vn-Qcw"/>
+                                                    <constraint firstAttribute="height" constant="30" id="wvt-d6-V9D"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ahS-YD-OJ3">
+                                                <rect key="frame" x="40" y="11.5" width="334" height="27.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="v28-9x-OVe" firstAttribute="top" secondItem="K6x-Uz-jB3" secondAttribute="top" constant="10" id="lXk-E4-bUW"/>
+                                            <constraint firstAttribute="bottom" secondItem="v28-9x-OVe" secondAttribute="bottom" constant="10" id="xll-1P-5p9"/>
+                                        </constraints>
                                     </stackView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="GPG-Ns-UdB">
-                                        <rect key="frame" x="0.0" y="56" width="414" height="762"/>
+                                        <rect key="frame" x="0.0" y="50" width="414" height="724"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="sSK-dZ-5Gr">
                                             <size key="itemSize" width="50" height="50"/>
@@ -62,15 +72,89 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="kql-sH-Pu9"/>
                     <connections>
                         <outlet property="collectionViewFlowLayout" destination="sSK-dZ-5Gr" id="Rmh-h0-TxU"/>
+                        <outlet property="labelAddress" destination="ahS-YD-OJ3" id="mNJ-F1-dqx"/>
                         <outlet property="pageCollectionView" destination="GPG-Ns-UdB" id="cc7-Yb-AOt"/>
-                        <outlet property="searchBar" destination="Q3C-Jn-SJL" id="M9B-Jx-GQU"/>
+                        <outlet property="searchLayout" destination="K6x-Uz-jB3" id="GhX-wa-fdn"/>
+                        <segue destination="d0L-Qs-6H6" kind="show" identifier="ToSearchAddressView" id="d6G-71-931"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="132" y="101"/>
+            <point key="canvasLocation" x="1042.0289855072465" y="100.44642857142857"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="A9u-HF-L3x">
+            <objects>
+                <viewController id="d0L-Qs-6H6" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bFw-DY-lYB">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="192-LP-GPp">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <subviews>
+                                    <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="ZlF-jO-Bc7">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="ahk-1i-DAv"/>
+                                        </constraints>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </searchBar>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dcG-TP-jX0">
+                                        <rect key="frame" x="0.0" y="50" width="414" height="724"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="oqD-fi-o1f">
+                                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oqD-fi-o1f" id="nvy-wE-Fg5">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="192-LP-GPp" firstAttribute="trailing" secondItem="nhB-Qh-2TC" secondAttribute="trailing" id="54j-as-S81"/>
+                            <constraint firstItem="nhB-Qh-2TC" firstAttribute="bottom" secondItem="192-LP-GPp" secondAttribute="bottom" id="GfE-NN-F3d"/>
+                            <constraint firstItem="192-LP-GPp" firstAttribute="leading" secondItem="nhB-Qh-2TC" secondAttribute="leading" id="dSQ-oZ-D7b"/>
+                            <constraint firstItem="192-LP-GPp" firstAttribute="top" secondItem="nhB-Qh-2TC" secondAttribute="top" id="g5k-3C-q9x"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="nhB-Qh-2TC"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="qzm-Lx-mKP"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aXt-nN-PlR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1986" y="100"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hXV-Hr-Obg">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Hy2-kB-W7f" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3n7-iv-gm3">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="0RZ-yB-cNP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ELK-kd-kBV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="100.44642857142857"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="magnifyingglass" catalog="system" width="64" height="56"/>
+    </resources>
 </document>

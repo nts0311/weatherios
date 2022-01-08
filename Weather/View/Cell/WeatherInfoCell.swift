@@ -26,6 +26,7 @@ class WeatherInfoCell: UICollectionViewCell, UITableViewDataSource, UITableViewD
         
         dataSource.delegate = self
         dataSource.fetchData(lat: 21.027813, long: 105.794271)
+        print("cell")
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

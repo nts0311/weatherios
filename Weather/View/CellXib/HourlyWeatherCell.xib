@@ -8,18 +8,18 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HourlyWeatherCell" rowHeight="102" id="kT2-VN-7S3" customClass="HourlyWeatherCell" customModule="Weather" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="502" height="102"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HourlyWeatherCell" rowHeight="100" id="kT2-VN-7S3" customClass="HourlyWeatherCell" customModule="Weather" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="502" height="100"/>
             <autoresizingMask key="autoresizingMask"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kT2-VN-7S3" id="Nim-mY-3s6">
-                <rect key="frame" x="0.0" y="0.0" width="502" height="102"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kT2-VN-7S3" id="Nim-mY-3s6">
+                <rect key="frame" x="0.0" y="0.0" width="502" height="100"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="IdX-5y-U3U">
-                        <rect key="frame" x="10" y="0.0" width="482" height="110"/>
+                        <rect key="frame" x="10" y="0.0" width="482" height="100"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="110" id="pLS-Mq-Tak"/>
+                            <constraint firstAttribute="height" constant="100" id="GAq-my-aKG"/>
                         </constraints>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="86X-RT-2sh">
                             <size key="itemSize" width="90" height="100"/>
@@ -36,6 +36,12 @@
                     <constraint firstAttribute="bottom" secondItem="IdX-5y-U3U" secondAttribute="bottom" id="yxb-cw-HuX"/>
                 </constraints>
             </tableViewCellContentView>
+            <constraints>
+                <constraint firstItem="Nim-mY-3s6" firstAttribute="leading" secondItem="kT2-VN-7S3" secondAttribute="leading" id="9Vp-3p-8OU"/>
+                <constraint firstAttribute="trailing" secondItem="Nim-mY-3s6" secondAttribute="trailing" id="Spu-Iq-eGF"/>
+                <constraint firstItem="Nim-mY-3s6" firstAttribute="top" secondItem="kT2-VN-7S3" secondAttribute="top" id="a4V-Qx-CTE"/>
+                <constraint firstAttribute="bottom" secondItem="Nim-mY-3s6" secondAttribute="bottom" id="jVb-mS-NM9"/>
+            </constraints>
             <connections>
                 <outlet property="collectionView" destination="IdX-5y-U3U" id="pzc-Gt-RsX"/>
             </connections>
