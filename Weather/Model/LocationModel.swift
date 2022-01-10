@@ -14,4 +14,11 @@ class LocationModel: Object {
     @objc dynamic var nation: String = ""
     @objc dynamic var lat: Double = 0
     @objc dynamic var long: Double = 0
+    @objc dynamic var isUserLocation = false
+    
+    var fullLocation: String {
+        get {
+            return "\(name), \(nation)"
+        }
+    }
 }

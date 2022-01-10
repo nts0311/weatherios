@@ -14,8 +14,6 @@ protocol WeatherRemoteSourceDelegate {
 }
 
 class WeatherRemoteDataSource: NetworkFetcher<WeatherModel> {
-    //private override init() {}
-    
     let baseUrl = "https://api.openweathermap.org/data/2.5/onecall?appid=8c90b4ac293e4f11683921441e152339&units=metric"
     var delegate: WeatherRemoteSourceDelegate?
     
@@ -31,6 +29,4 @@ class WeatherRemoteDataSource: NetworkFetcher<WeatherModel> {
     override func onError(error: Error) {
         delegate?.onError(error: error)
     }
-    
-    //static let shared = WeatherRemoteDataSource()
 }

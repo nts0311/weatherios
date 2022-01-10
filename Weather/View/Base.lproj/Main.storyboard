@@ -23,7 +23,7 @@
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="v28-9x-OVe">
                                                 <rect key="frame" x="0.0" y="11" width="30" height="28"/>
-                                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="guy-Vn-Qcw"/>
                                                     <constraint firstAttribute="height" constant="30" id="wvt-d6-V9D"/>

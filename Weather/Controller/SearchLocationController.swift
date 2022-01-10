@@ -16,7 +16,7 @@ class SearchLocationController: UIViewController {
     @IBOutlet weak var locationTableView: UITableView!
     
     var locations: Results<LocationModel>?
-    var locationDataSource = LocationDataSource()
+    var locationDataSource = LocationDataSource.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,7 +87,7 @@ extension SearchLocationController: UISearchBarDelegate {
     }
     
     func displayAddLocationAlert(location: LocationModel) {
-        let message = "Location found: \(location.name), \(location.nation). Would you like to add this locations?"
+        let message = "Location found: \(location.fullLocation). Would you like to add this locations?"
         let alert = UIAlertController(title: "Location found!", message: message, preferredStyle: .alert)
         let addAction = UIAlertAction(title: "Add", style: .default) {action in
             self.addLocation(location: location)

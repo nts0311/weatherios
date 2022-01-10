@@ -25,8 +25,11 @@ class WeatherInfoCell: UICollectionViewCell, UITableViewDataSource, UITableViewD
         tableView.estimatedRowHeight = 100
         
         dataSource.delegate = self
-        dataSource.fetchData(lat: 21.027813, long: 105.794271)
-        print("cell")
+    }
+    
+    func loadWeatherData(location: LocationModel) {
+        print("load location weather data")
+        dataSource.fetchData(lat: location.lat, long: location.long)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

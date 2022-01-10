@@ -8,12 +8,58 @@
 
 import Foundation
 import RealmSwift
+import CoreLocation
 
 class LocationDataSource {
     let realm = try! Realm()
+    var locations: Results<LocationModel>
+    
+    private init () {
+        locations = realm.objects(LocationModel.self)
+    }
        
     func loadLocations() -> Results<LocationModel>{
-        return realm.objects(LocationModel.self)
+        locations = realm.objects(LocationModel.self)
+        return locations
+    }
+    
+    func updateUserLocation(_ location: CLLocation, completedListener: @escaping () -> Void) {
+        CLGeocoder().reverseGeocodeLocation(location) { placemark, error in
+            guard error == nil, let placemark = placemark else {
+                completedListener()
+                return
+            }
+
+            if placemark.count > 0 {
+                let place = placemark[0]
+                
+                var userLocation = self.locations.filter { return $0.isUserLocation }.first
+                var saved = false
+                if(userLocation != nil) {
+                    saved = self.realmWrite {
+                        userLocation?.lat = location.coordinate.latitude
+                        userLocation?.long = location.coordinate.longitude
+                        userLocation?.name = place.name ?? ""
+                        userLocation?.nation = place.country ?? ""
+                    }
+                }
+                else {
+                    userLocation = LocationModel()
+                    userLocation!.lat = location.coordinate.latitude
+                    userLocation!.long = location.coordinate.longitude
+                    userLocation!.name = place.name ?? ""
+                    userLocation!.nation = place.country ?? ""
+                    userLocation!.isUserLocation = true
+                    saved = self.realmWrite {
+                        self.realm.add(userLocation!)
+                    }
+                }
+                
+                if(saved){
+                    completedListener()
+                }
+            }
+        }
     }
     
     func addLocation(_ location: LocationModel) -> Bool {
@@ -39,4 +85,6 @@ class LocationDataSource {
         }
         return false
     }
+    
+    static let shared = LocationDataSource()
 }
