@@ -16,6 +16,7 @@ class LocationDataSource {
     
     private init () {
         locations = realm.objects(LocationModel.self)
+        var arr = Array(locations)
     }
        
     func loadLocations() -> Results<LocationModel>{
@@ -50,6 +51,7 @@ class LocationDataSource {
                     userLocation!.name = place.name ?? ""
                     userLocation!.nation = place.country ?? ""
                     userLocation!.isUserLocation = true
+                    userLocation!.uuid = UUID().uuidString
                     saved = self.realmWrite {
                         self.realm.add(userLocation!)
                     }

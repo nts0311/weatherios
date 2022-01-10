@@ -69,6 +69,7 @@ extension SearchLocationController: UISearchBarDelegate {
                     locationModel.nation = placemark.country ?? ""
                     locationModel.lat = placemark.location!.coordinate.latitude
                     locationModel.long = placemark.location!.coordinate.longitude
+                    locationModel.uuid = UUID().uuidString
                     
                     self.displayAddLocationAlert(location: locationModel)
                 }

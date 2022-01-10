@@ -9,8 +9,13 @@
 import UIKit
 
 class WeatherInfoCell: UICollectionViewCell, UITableViewDataSource, UITableViewDelegate {
+    let NUM_OF_SECTIONS = 3
+    let SECTION_CURRENT_WEATHER = 0
+    let SECTION_HOURLY_WEATHER = 1
+    let SECTION_DAILY_WEATHER = 2
+    
     @IBOutlet weak var tableView: UITableView!
-    let dataSource = WeatherRemoteDataSource()
+    let weatherRepo = WeatherRepo()
     var data: WeatherModel?
     
     override func awakeFromNib() {
@@ -23,21 +28,25 @@ class WeatherInfoCell: UICollectionViewCell, UITableViewDataSource, UITableViewD
         tableView.dataSource = self
         tableView.delegate = self
         tableView.estimatedRowHeight = 100
-        
-        dataSource.delegate = self
     }
     
     func loadWeatherData(location: LocationModel) {
-        print("load location weather data")
-        dataSource.fetchData(lat: location.lat, long: location.long)
+        weatherRepo.getWeatherData(location: location, forceRefresh: false, onComplete: onLoadDataComplete)
+    }
+    
+    func onLoadDataComplete(model: WeatherModel?) {
+        if(model != nil){
+            self.data = model!
+            tableView.reloadData()
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return NUM_OF_SECTIONS
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if(section < 2){
+        if(section < SECTION_DAILY_WEATHER){
             return 1
         }
         else {
@@ -46,17 +55,17 @@ class WeatherInfoCell: UICollectionViewCell, UITableViewDataSource, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if(indexPath.section == 0) {
+        if(indexPath.section == SECTION_CURRENT_WEATHER) {
             let cell = tableView.dequeueReusableCell(withIdentifier: K.CurrentWeatherCell, for: indexPath) as! CurrentWeatherCell
             if(data != nil){
                 cell.setData(data: data!.current)
             }
             return cell
         }
-        else if (indexPath.section == 1) {
+        else if (indexPath.section == SECTION_HOURLY_WEATHER) {
             let cell = tableView.dequeueReusableCell(withIdentifier: K.HourlyWeatherCell, for: indexPath) as! HourlyWeatherCell
             if(data != nil){
-                cell.setData(data: data!.hourly)
+                cell.setData(data: Array(data!.hourly))
             }
             return cell
         }
@@ -79,18 +88,18 @@ class WeatherInfoCell: UICollectionViewCell, UITableViewDataSource, UITableViewD
     }
 }
 
-extension WeatherInfoCell: WeatherRemoteSourceDelegate {
-    func onSuccess(data: WeatherModel) {
-        DispatchQueue.main.async {
-            self.data = data
-            self.tableView.reloadData()
-        }
-    }
-    
-    func onError(error: Error) {
-        DispatchQueue.main.async {
-            print(error)
-        }
-    }
-}
+//extension WeatherInfoCell: WeatherRemoteSourceDelegate {
+//    func onSuccess(data: WeatherModel) {
+//        DispatchQueue.main.async {
+//            self.data = data
+//            self.tableView.reloadData()
+//        }
+//    }
+//
+//    func onError(error: Error) {
+//        DispatchQueue.main.async {
+//            print(error)
+//        }
+//    }
+//}
 

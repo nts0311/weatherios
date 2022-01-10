@@ -15,6 +15,7 @@ class LocationModel: Object {
     @objc dynamic var lat: Double = 0
     @objc dynamic var long: Double = 0
     @objc dynamic var isUserLocation = false
+    @objc dynamic var uuid: String = ""
     
     var fullLocation: String {
         get {

@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import RealmSwift
 
 // MARK: - WeatherModel
-struct WeatherModel: Decodable {
+struct WeatherModel: Codable {
     let lat, lon: Double
     let timezone: String
     let current: HourlyWeather
@@ -18,7 +19,7 @@ struct WeatherModel: Decodable {
 }
 
 // MARK: - Current
-struct HourlyWeather: Decodable {
+struct HourlyWeather: Codable {
     let dt: Int
     let sunrise, sunset: Int?
     let temp, feels_like: Double
@@ -33,7 +34,7 @@ struct HourlyWeather: Decodable {
 }
 
 // MARK: - Weather
-struct Weather: Decodable {
+struct Weather: Codable {
     let id: Int
     let main: String
     let description: String
@@ -62,7 +63,7 @@ struct Weather: Decodable {
 }
 
 // MARK: - Daily
-struct Daily: Decodable {
+struct Daily: Codable {
     let dt, sunrise, sunset, moonrise: Int
     let moonset: Int
     let moon_phase: Double
@@ -78,7 +79,7 @@ struct Daily: Decodable {
 }
 
 // MARK: - Temp
-struct Temp: Decodable {
+struct Temp: Codable {
     let day, min, max, night: Double
     let eve, morn: Double
 }

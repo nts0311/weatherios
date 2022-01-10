@@ -8,34 +8,31 @@
 
 import Foundation
 
-class NetworkFetcher<T: Decodable> {
-    func performRequest(urlStr: String){
+class RemoteDataSource<T: Decodable> {
+    func performRequest(urlStr: String, onCompletedHandler: @escaping (T?, Error?) -> Void){
         guard let url = URL(string: urlStr) else { return }
         let session = URLSession(configuration: .default)
         session.dataTask(with: url) {data, _, error in
             if(error != nil){
-                self.onError(error: error!)
+                onCompletedHandler(nil, error!)
                 return
             }
             
             if let data = data {
-                if let decodedData = self.decodeJson(data: data){
-                    self.onSucess(data: decodedData)
+                if let decodedData = self.decodeJson(data: data, onCompletedHandler: onCompletedHandler){
+                    onCompletedHandler(decodedData, nil)
                 }
             }
         }.resume()
     }
     
-    func decodeJson(data: Data) -> T? {
+    func decodeJson(data: Data, onCompletedHandler: (T?, Error?) -> Void) -> T? {
         let decoder = JSONDecoder()
         do {
             return try decoder.decode(T.self, from: data)
         } catch  {
-            onError(error: error)
+            onCompletedHandler(nil, error)
             return nil
         }
     }
-    
-    func onSucess(data: T) {}
-    func onError(error: Error) {}
 }
