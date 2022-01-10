@@ -85,10 +85,10 @@
             </objects>
             <point key="canvasLocation" x="1042.0289855072465" y="100.44642857142857"/>
         </scene>
-        <!--View Controller-->
+        <!--Locations-->
         <scene sceneID="A9u-HF-L3x">
             <objects>
-                <viewController id="d0L-Qs-6H6" sceneMemberID="viewController">
+                <viewController id="d0L-Qs-6H6" customClass="SearchLocationController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bFw-DY-lYB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -96,7 +96,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="192-LP-GPp">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
-                                    <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="ZlF-jO-Bc7">
+                                    <searchBar contentMode="redraw" placeholder="city, nation, ..." translatesAutoresizingMaskIntoConstraints="NO" id="ZlF-jO-Bc7">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="ahk-1i-DAv"/>
@@ -107,7 +107,7 @@
                                         <rect key="frame" x="0.0" y="50" width="414" height="724"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="oqD-fi-o1f">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocationCell" id="oqD-fi-o1f" customClass="SwipeTableViewCell" customModule="SwipeCellKit">
                                                 <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oqD-fi-o1f" id="nvy-wE-Fg5">
@@ -129,7 +129,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nhB-Qh-2TC"/>
                     </view>
-                    <navigationItem key="navigationItem" id="qzm-Lx-mKP"/>
+                    <navigationItem key="navigationItem" title="Locations" id="qzm-Lx-mKP"/>
+                    <connections>
+                        <outlet property="locationTableView" destination="dcG-TP-jX0" id="LtN-NF-098"/>
+                        <outlet property="searchBar" destination="ZlF-jO-Bc7" id="kvi-R7-yUA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aXt-nN-PlR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

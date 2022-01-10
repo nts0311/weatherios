@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import CoreLocation
+
 
 //8c90b4ac293e4f11683921441e152339
 
@@ -24,17 +24,6 @@ class ViewController: UIViewController {
         pageCollectionView.dataSource = self
         pageCollectionView.delegate = self
         searchLayout.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onSearchTapped)))
-        
-        let address = "thanh hoa"
-        
-                getCoordinateFrom(address: address) { coordinate, error in
-                    guard let coordinate = coordinate, error == nil else { return }
-                    // don't forget to update the UI from the main thread
-                    DispatchQueue.main.async {
-                        print(address, "Location:", coordinate) // Rio de Janeiro, Brazil Location: CLLocationCoordinate2D(latitude: -22.9108638, longitude: -43.2045436)
-                    }
-        
-                }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,19 +34,8 @@ class ViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
-    func getCoordinateFrom(address: String, completion: @escaping(_ coordinate: CLLocationCoordinate2D?, _ error: Error?) -> () ) {
-        CLGeocoder().geocodeAddressString(address) {
-            completion($0?.first?.location?.coordinate, $1)
-            //print($0?.first?. ?? "")
-            if($0 == nil) {return}
-            for place in $0! {
-                print("\(place.name), \(place.country), \(place.locality)")
-            }
-        }
-    }
-    
     @objc func onSearchTapped(){
-        print("aaa")
+        self.performSegue(withIdentifier: K.ToSearchAddressView, sender: self)
     }
 }
 
