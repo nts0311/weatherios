@@ -16,7 +16,6 @@ class LocationDataSource {
     
     private init () {
         locations = realm.objects(LocationModel.self)
-        var arr = Array(locations)
     }
        
     func loadLocations() -> Results<LocationModel>{

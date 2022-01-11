@@ -15,8 +15,9 @@ class WeatherInfoCell: UICollectionViewCell, UITableViewDataSource, UITableViewD
     let SECTION_DAILY_WEATHER = 2
     
     @IBOutlet weak var tableView: UITableView!
-    let weatherRepo = WeatherRepo()
+    let weatherRepo = WeatherRepo2.shared
     var data: WeatherModel?
+    var currentLocation: LocationModel?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,7 +32,9 @@ class WeatherInfoCell: UICollectionViewCell, UITableViewDataSource, UITableViewD
     }
     
     func loadWeatherData(location: LocationModel) {
-        weatherRepo.getWeatherData(location: location, forceRefresh: false, onComplete: onLoadDataComplete)
+        let forceRefresh = currentLocation == nil ? true : false
+        currentLocation = location
+        weatherRepo.getWeatherData(location: location, forceRefresh: forceRefresh, onCompleteHandler: onLoadDataComplete)
     }
     
     func onLoadDataComplete(model: WeatherModel?) {
@@ -87,19 +90,4 @@ class WeatherInfoCell: UICollectionViewCell, UITableViewDataSource, UITableViewD
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
-
-//extension WeatherInfoCell: WeatherRemoteSourceDelegate {
-//    func onSuccess(data: WeatherModel) {
-//        DispatchQueue.main.async {
-//            self.data = data
-//            self.tableView.reloadData()
-//        }
-//    }
-//
-//    func onError(error: Error) {
-//        DispatchQueue.main.async {
-//            print(error)
-//        }
-//    }
-//}
 
