@@ -8,19 +8,26 @@
 
 import UIKit
 
-class WeatherInfoCell: UICollectionViewCell, UITableViewDataSource, UITableViewDelegate {
+class WeatherInfoCell: UICollectionViewCell {
     let NUM_OF_SECTIONS = 3
     let SECTION_CURRENT_WEATHER = 0
     let SECTION_HOURLY_WEATHER = 1
     let SECTION_DAILY_WEATHER = 2
     
     @IBOutlet weak var tableView: UITableView!
+    
+    private let refreshControl = UIRefreshControl()
+    
     let weatherRepo = WeatherRepo2.shared
     var data: WeatherModel?
     var currentLocation: LocationModel?
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+        tableView.addSubview(refreshControl)
         
         tableView.register(UINib(nibName: K.CurrentWeatherCell, bundle: nil), forCellReuseIdentifier: K.CurrentWeatherCell)
         tableView.register(UINib(nibName:
@@ -37,13 +44,22 @@ class WeatherInfoCell: UICollectionViewCell, UITableViewDataSource, UITableViewD
         weatherRepo.getWeatherData(location: location, forceRefresh: forceRefresh, onCompleteHandler: onLoadDataComplete)
     }
     
-    func onLoadDataComplete(model: WeatherModel?) {
+    private func onLoadDataComplete(model: WeatherModel?) {
         if(model != nil){
             self.data = model!
             tableView.reloadData()
         }
     }
     
+    @objc func refresh(_ sender: AnyObject) {
+        if (refreshControl.isRefreshing){
+            refreshControl.endRefreshing()
+        }
+       weatherRepo.getWeatherData(location: currentLocation!, forceRefresh: true, onCompleteHandler: onLoadDataComplete)
+    }
+}
+
+extension WeatherInfoCell: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return NUM_OF_SECTIONS
     }

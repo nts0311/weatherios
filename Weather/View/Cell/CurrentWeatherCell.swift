@@ -23,6 +23,7 @@ class CurrentWeatherCell: UITableViewCell {
     @IBOutlet weak var labelPressure: UILabel!
     @IBOutlet weak var labelVisibility: UILabel!
     @IBOutlet weak var labelDew: UILabel!
+    @IBOutlet weak var labelLastUpdate: UILabel!
     
 
     override func awakeFromNib() {
@@ -43,5 +44,15 @@ class CurrentWeatherCell: UITableViewCell {
         labelPressure.text = "Pressure: \(data.pressure)hPa"
         labelVisibility.text = "Visibility: \(data.visibility / 1000)km"
         labelDew.text = "Dew point: \(Int(data.dew_point))°C"
+        
+        let lastUpdate = epochToStr(TimeInterval(exactly: data.dt)!)
+        labelLastUpdate.text = "Last update: \(lastUpdate)"
+    }
+    
+    func epochToStr(_ epoch: TimeInterval) -> String{
+        let df = DateFormatter()
+        df.dateFormat = "dd/MM/yyyy HH:mm:ss"
+        df.timeZone = TimeZone.current
+        return df.string(from: Date(timeIntervalSince1970: epoch))
     }
 }
